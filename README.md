@@ -1,168 +1,132 @@
 # personalportfolio.github.io
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Granth Senjaliya | Portfolio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: #f5f5f5; color: #222; }
+    header { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 20px; position: sticky; top: 0; }
+    nav { max-width: 1100px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
+    nav a { margin: 0 12px; text-decoration: none; color: #444; font-weight: bold; }
+    nav a:hover { color: #6c63ff; }
 
-import React from "react";
-import { motion } from "framer-motion";
+    .hero { max-width: 1100px; margin: 60px auto; display: flex; flex-wrap: wrap; align-items: center; padding: 20px; }
+    .hero-text { flex: 1; }
+    .hero-text h1 { font-size: 48px; font-weight: 800; line-height: 1.2; }
+    .hero-text span { color: #6c63ff; }
+    .hero-text p { margin-top: 15px; font-size: 18px; color: #555; }
 
-export default function Portfolio() {
-  const projects = [
-    {
-      title: "Project One",
-      desc: "Short description of project one — what it does and why it matters.",
-      url: "#",
-      tags: ["React", "Tailwind", "API"],
-    },
-    {
-      title: "Project Two",
-      desc: "Short description of project two — what it does and why it matters.",
-      url: "#",
-      tags: ["ESP32", "IoT", "C++"],
-    },
-    {
-      title: "Project Three",
-      desc: "Short description of project three — mobile or web app demo.",
-      url: "#",
-      tags: ["Python", "ML"],
-    },
-  ];
+    .hero-buttons a { display: inline-block; margin-top: 20px; margin-right: 10px; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+    .btn-primary { background: #6c63ff; color: white; }
+    .btn-secondary { border: 2px solid #444; color: #444; }
 
-  return (
-    <div className="min-h-screen bg-gray-50 text-gray-900 antialiased">
-      <header className="max-w-5xl mx-auto p-6 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center text-white font-bold">GS</div>
-          <div>
-            <div className="text-lg font-semibold">Granth Senjaliya</div>
-            <div className="text-sm text-gray-500">Embedded systems & web developer</div>
-          </div>
-        </div>
-        <nav className="hidden md:flex gap-6 text-sm">
-          <a href="#about" className="hover:text-indigo-600">About</a>
-          <a href="#projects" className="hover:text-indigo-600">Projects</a>
-          <a href="#skills" className="hover:text-indigo-600">Skills</a>
-          <a href="#contact" className="hover:text-indigo-600">Contact</a>
-        </nav>
-      </header>
+    .section { max-width: 1100px; margin: 60px auto; padding: 20px; }
+    .section h2 { font-size: 32px; margin-bottom: 20px; }
 
-      <main className="max-w-5xl mx-auto p-6">
-        <section className="grid md:grid-cols-2 gap-8 items-center mt-6">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
-              Hi, I’m <span className="text-indigo-600">Granth Senjaliya</span>
-            </h1>
-            <p className="mt-4 text-gray-600 max-w-xl">
-              I build embedded systems, IoT solutions, and polished web experiences. I enjoy
-              turning ideas into working prototypes and production-ready applications.
-            </p>
+    .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 20px; }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 20px; }
 
-            <div className="mt-6 flex gap-3">
-              <a href="#projects" className="inline-flex items-center px-4 py-2 rounded-lg bg-indigo-600 text-white">See projects</a>
-              <a href="#contact" className="inline-flex items-center px-4 py-2 rounded-lg border border-gray-200">Contact me</a>
-            </div>
+    footer { text-align: center; padding: 20px; margin-top: 40px; color: #777; }
+    /* Animations */
+    .fade-in { opacity: 0; transform: translateY(20px); animation: fadeIn 0.8s forwards; }
+    .fade-in-delay { opacity: 0; transform: translateY(20px); animation: fadeIn 0.8s 0.3s forwards; }
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Animations */
+    .fade-in { opacity: 0; transform: translateY(20px); animation: fadeIn 0.8s forwards; }
+    .fade-in-delay { opacity: 0; transform: translateY(20px); animation: fadeIn 0.8s 0.3s forwards; }
 
-            <div className="mt-8 flex gap-4 text-gray-500">
-              <a href="https://github.com/granthsenjaliya" aria-label="GitHub" title="GitHub">GitHub</a>
-              <a href="https://linkedin.com/in/granthsenjaliya" aria-label="LinkedIn" title="LinkedIn">LinkedIn</a>
-              <a href="#" aria-label="Twitter" title="Twitter">Twitter</a>
-            </div>
-          </motion.div>
+    /* NEW: Slide-in and Scale-up animations */
+    .slide-in-left { opacity: 0; transform: translateX(-40px); animation: slideInLeft 0.9s forwards; }
+    .slide-in-right { opacity: 0; transform: translateX(40px); animation: slideInRight 0.9s forwards; }
+    .scale-up { opacity: 0; transform: scale(0.8); animation: scaleUp 0.8s forwards; }
 
-          <motion.div
-            className="order-first md:order-last"
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="w-full rounded-2xl overflow-hidden shadow-lg bg-white">
-              <img src="https://source.unsplash.com/collection/895539/800x600" alt="hero" className="w-full h-64 object-cover" />
-            </div>
-          </motion.div>
-        </section>
+    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); }}
+    @keyframes slideInLeft { to { opacity: 1; transform: translateX(0); }}
+    @keyframes slideInRight { to { opacity: 1; transform: translateX(0); }}
+    @keyframes scaleUp { to { opacity: 1; transform: scale(1); }}
 
-        <section id="about" className="mt-16 bg-white rounded-2xl p-6 shadow-sm">
-          <h2 className="text-2xl font-semibold">About me</h2>
-          <p className="mt-4 text-gray-600">
-            I'm a developer with experience in embedded firmware (ESP32/Arduino), sensors, and full-stack web
-            development. I love building practical projects that solve real problems — from animal-deterrent IoT systems
-            to responsive web dashboards.
-          </p>
+  </style>
+</head>
+<body>
 
-          <div className="mt-4 grid sm:grid-cols-2 gap-4">
-            <div>
-              <h3 className="font-medium">Location</h3>
-              <p className="text-gray-500 text-sm">India</p>
-            </div>
-            <div>
-              <h3 className="font-medium">Availability</h3>
-              <p className="text-gray-500 text-sm">Open to freelance and collaborations</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="projects" className="mt-10">
-          <h2 className="text-2xl font-semibold">Selected projects</h2>
-          <div className="mt-6 grid sm:grid-cols-2 gap-6">
-            {projects.map((p, i) => (
-              <motion.a
-                key={i}
-                href={p.url}
-                className="block bg-white rounded-xl p-5 shadow hover:shadow-md transition-shadow"
-                whileHover={{ y: -4 }}
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="text-lg font-semibold">{p.title}</h3>
-                    <p className="mt-2 text-gray-600 text-sm">{p.desc}</p>
-                  </div>
-                </div>
-
-                <div className="mt-4 flex gap-2 flex-wrap text-xs">
-                  {p.tags.map((t) => (
-                    <span key={t} className="px-2 py-1 rounded bg-gray-100">{t}</span>
-                  ))}
-                </div>
-              </motion.a>
-            ))}
-          </div>
-        </section>
-
-        <section id="skills" className="mt-10 bg-white p-6 rounded-2xl shadow-sm">
-          <h2 className="text-2xl font-semibold">Skills</h2>
-          <div className="mt-4 grid sm:grid-cols-3 gap-4">
-            <div>
-              <h4 className="font-medium">Embedded</h4>
-              <p className="text-sm text-gray-500">ESP32, Arduino, C/C++, Sensors, PCB basics</p>
-            </div>
-            <div>
-              <h4 className="font-medium">Web</h4>
-              <p className="text-sm text-gray-500">React, Tailwind, Node.js, REST APIs</p>
-            </div>
-            <div>
-              <h4 className="font-medium">Tools</h4>
-              <p className="text-sm text-gray-500">Git, VSCode, Linux, Fritzing</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="contact" className="mt-10">
-          <div className="bg-gradient-to-r from-indigo-50 to-pink-50 p-6 rounded-2xl">
-            <h2 className="text-2xl font-semibold">Get in touch</h2>
-            <p className="mt-2 text-gray-600">Send me an email or connect on LinkedIn.</p>
-
-            <div className="mt-4 flex gap-3">
-              <a href="mailto:granth@example.com" className="inline-flex items-center px-4 py-2 rounded-lg bg-indigo-600 text-white">Email me</a>
-              <a href="https://linkedin.com/in/granthsenjaliya" className="inline-flex items-center px-4 py-2 rounded-lg border">LinkedIn</a>
-            </div>
-          </div>
-        </section>
-
-        <footer className="mt-12 text-center text-sm text-gray-500 pb-12">
-          © {new Date().getFullYear()} Granth Senjaliya • Built with ❤
-        </footer>
-      </main>
+<header>
+  <nav>
+    <div><strong>Granth Senjaliya</strong></div>
+    <div>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
     </div>
-  );
-}
+  </nav>
+</header>
+
+<section class="hero fade-in">
+  <div class="hero-text slide-in-left">
+    <h1>Hi, I'm <span>Granth Senjaliya</span></h1>
+    <p>I create embedded systems, IoT projects, and beautiful websites. I love building practical, smart, and efficient solutions.</p>
+    <div class="hero-buttons">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-secondary">Contact Me</a>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section fade-in-delay">
+  <h2>About Me</h2>
+  <div class="card scale-up">
+    <p>
+      I’m a developer specializing in embedded systems (ESP32, Arduino), IoT sensors, automation systems, and full-stack web development.
+      I enjoy transforming ideas into working prototypes and real-world solutions.
+    </p>
+  </div>
+</section>
+
+<section id="projects" class="section fade-in">
+  <h2 class="slide-in-right">Projects</h2>
+
+  <div class="card scale-up">
+    <h3>Animal Detection IoT System</h3>
+    <p>A PIR‑based long‑range animal detection system with buzzer + fencing activation.</p>
+  </div>
+
+  <div class="card scale-up">
+    <h3>ESP32 Smart Home Controller</h3>
+    <p>Voice‑controlled and WiFi‑based automation project using ESP32 + VC01 module.</p>
+  </div>
+
+  <div class="card scale-up">
+    <h3>Personal Portfolio Website</h3>
+    <p>A modern and responsive portfolio to showcase my work and skills.</p>
+  </div>
+</section>
+
+<section id="skills" class="section fade-in-delay">
+  <h2 class="slide-in-left">Skills</h2>
+  <div class="skills-grid">
+    <div class="card scale-up">Embedded: ESP32, Arduino, C/C++, Sensors</div>
+    <div class="card scale-up">Web: HTML, CSS, JavaScript, React</div>
+    <div class="card scale-up">Tools: Git, VSCode, Linux, Fritzing</div>
+  </div>
+</section>
+
+<section id="contact" class="section fade-in">
+  <h2 class="slide-in-right">Contact</h2>
+  <div class="card scale-up">
+    <p>Email: <a href="mailto:granthsenjaliya@gmail.com">granthsenjaliya@gmail.com</a></p>
+    <p>GitHub: <a href="https://github.com/granthsenjaliya">github.com/granthsenjaliya</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/granthsenjaliya">linkedin.com/in/granthsenjaliya</a></p>
+  </div>
+</section>
+
+<footer>
+  © 2025 Granth Senjaliya — All Rights Reserved
+</footer>
+
+</body>
+</html>
