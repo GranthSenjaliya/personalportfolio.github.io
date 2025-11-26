@@ -1,16 +1,4 @@
 # personalportfolio.github.io
-// Portfolio.jsx
-// Single-file React component for a modern portfolio like https://parthkp126.github.io/protfolio/
-// Uses Tailwind CSS for styling and framer-motion for simple animations.
-// To preview locally:
-// 1) Create a new React app (Vite or CRA).
-// 2) Install Tailwind and framer-motion. Example (Vite):
-//    npm create vite@latest my-portfolio --template react
-//    cd my-portfolio
-//    npm install
-//    npm install framer-motion
-//    Follow Tailwind docs to install Tailwind CSS in the project.
-// 3) Place this file in src/components/Portfolio.jsx and import it in App.jsx.
 
 import React from "react";
 import { motion } from "framer-motion";
