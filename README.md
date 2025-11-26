@@ -1,4 +1,3 @@
-# personalportfolio.github.io
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +6,8 @@
   <title>Granth Senjaliya | Portfolio</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-    body { background: #f5f5f5; color: #222; }
-    header { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 20px; position: sticky; top: 0; }
+    body { background: #0d0d0d; color: #e6e6e6; }
+    header { background: #1a1a1a; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 20px; position: sticky; top: 0; }
     nav { max-width: 1100px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
     nav a { margin: 0 12px; text-decoration: none; color: #444; font-weight: bold; }
     nav a:hover { color: #6c63ff; }
@@ -26,7 +25,7 @@
     .section { max-width: 1100px; margin: 60px auto; padding: 20px; }
     .section h2 { font-size: 32px; margin-bottom: 20px; }
 
-    .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 20px; }
+    .card { background: #1a1a1a; padding: 20px; border-radius: 12px; box-shadow: 0 4px 20px rgba(255,255,255,0.1); margin-bottom: 20px; }
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 20px; }
 
     footer { text-align: center; padding: 20px; margin-top: 40px; color: #777; }
@@ -50,6 +49,10 @@
     @keyframes slideInRight { to { opacity: 1; transform: translateX(0); }}
     @keyframes scaleUp { to { opacity: 1; transform: scale(1); }}
 
+    /* SUPER animations */
+    .glow-hover:hover { box-shadow: 0 0 20px #6c63ff; transform: scale(1.05); transition: 0.3s; }
+    .floating { animation: float 3s ease-in-out infinite; }
+    @keyframes float { 0%{transform:translateY(0);}50%{transform:translateY(-10px);}100%{transform:translateY(0);} }
   </style>
 </head>
 <body>
@@ -109,16 +112,16 @@
 <section id="skills" class="section fade-in-delay">
   <h2 class="slide-in-left">Skills</h2>
   <div class="skills-grid">
-    <div class="card scale-up">Embedded: ESP32, Arduino, C/C++, Sensors</div>
-    <div class="card scale-up">Web: HTML, CSS, JavaScript, React</div>
-    <div class="card scale-up">Tools: Git, VSCode, Linux, Fritzing</div>
+    <div class="card scale-up">Web Developer: HTML, CSS, JavaScript, React</div>
+    <div class="card scale-up">Programmer: C, C++, Python</div>
+    <div class="card scale-up">Technologies: API, Node.js, Firebase</div>
   </div>
 </section>
 
 <section id="contact" class="section fade-in">
   <h2 class="slide-in-right">Contact</h2>
   <div class="card scale-up">
-    <p>Email: <a href="mailto:granthsenjaliya@gmail.com">granthsenjaliya@gmail.com</a></p>
+    <p>Email: <a href=\"mailto:granthsenjaliya881@gmail.com">granthsenjaliya881@gmail.com</a></p>
     <p>GitHub: <a href="https://github.com/granthsenjaliya">github.com/granthsenjaliya</a></p>
     <p>LinkedIn: <a href="https://linkedin.com/in/granthsenjaliya">linkedin.com/in/granthsenjaliya</a></p>
   </div>
